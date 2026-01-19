@@ -17,6 +17,10 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 repositories {
     mavenCentral()
 }
