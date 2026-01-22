@@ -3,6 +3,8 @@ package com.taskmanager.service
 import com.taskmanager.domain.Task
 import com.taskmanager.repository.TaskRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
 import scala.jdk.CollectionConverters.*
 import scala.jdk.OptionConverters.*
 
@@ -15,10 +17,12 @@ class TaskService(taskRepository: TaskRepository):
   def getTaskById(id: Long): Option[Task] =
     taskRepository.findById(id).toScala
 
+  @Transactional
   def createTask(title: String, description: String): Task =
     val task = Task(title, description)
     taskRepository.save(task)
 
+  @Transactional
   def updateTask(id: Long, title: Option[String], description: Option[String]): Option[Task] =
     getTaskById(id).map { task =>
       title.foreach(t => task.title = t)
@@ -36,6 +40,7 @@ class TaskService(taskRepository: TaskRepository):
       case None =>
         Left("Task not found")
 
+  @Transactional
   def deleteTask(id: Long): Boolean =
     if taskRepository.existsById(id) then
       taskRepository.deleteById(id)
