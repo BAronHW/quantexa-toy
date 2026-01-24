@@ -10,5 +10,9 @@ const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.scss',
 })
 export class User {
-  userName = DUMMY_USERS[randomUserIndex]
+  selectedUser = DUMMY_USERS[randomUserIndex]
+
+  get imagePath() {
+    return '/' + this.selectedUser.avatar
+  }
 }

@@ -1,6 +1,10 @@
 <div class="button-container">
   <button class="profile-button">
-    <img src="https://i.pravatar.cc/40" [alt]="userName.avatar" class="avatar" />
-    <span class="name">{{ userName.name }}</span>
+    <img 
+      [src]="imagePath"
+      [alt]="selectedUser.avatar" 
+      class="avatar" 
+    />
+    <span class="name">{{ selectedUser.name }}</span>
   </button>
 </div>
