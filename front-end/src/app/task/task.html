@@ -1,3 +1,8 @@
 <div>
-  <h1>{{selectedUserName}}</h1>
+  @if (isVisible()) {
+    <h1>{{selectedUserName}}</h1>
+  } @else {
+    <h1>No user selected</h1>
+  }
+  <button (click)="toggle()">{{isVisible()}}</button>
 </div>

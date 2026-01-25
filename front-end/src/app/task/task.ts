@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { DUMMY_USERS } from '../../dummy-users';
-
+import { Component, Input, signal } from '@angular/core';
 @Component({
   selector: 'app-task',
   imports: [],
@@ -9,4 +7,9 @@ import { DUMMY_USERS } from '../../dummy-users';
 })
 export class Task {
   @Input({required: true}) selectedUserName!: string;
+  isVisible = signal<boolean>(true);
+
+  toggle() {
+    this.isVisible.update((oldVal: boolean) => !oldVal);
+  }
 }
